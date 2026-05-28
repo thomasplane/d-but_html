@@ -1,265 +1,304 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Thomas PLANE</title>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #18bc9c;
-            --text-color: #333;
-            --bg-light: #f8f9fa;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projets — CyberTech Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* Styles spécifiques aux filtres et à la grille de projets */
+    .filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      padding: 1.5rem 5% 2.5rem;
+      justify-content: center;
+    }
 
-        header {
-            text-align: center;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
+    .filter-btn {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: var(--bg-card);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.5rem 1.2rem;
+      border-radius: var(--card-radius);
+      cursor: pointer;
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        h1 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(0, 206, 201, 0.08);
+      color: var(--cyan);
+      border-color: var(--cyan);
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+    
+    .filter-btn.active i {
+      color: var(--violet);
+    }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--secondary-color);
-            font-weight: bold;
-            margin-top: 0;
-        }
+    /* Ajustement de la grille pour les projets */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 0 5% 4rem;
+    }
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            font-size: 0.95rem;
-        }
+    /* Révélation dynamique de la description au survol */
+    .project-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-top: 0.5rem;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
 
-        .contact-info a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
+    .card:hover .project-card-desc {
+      max-height: 80px;
+      opacity: 1;
+    }
 
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
+    .project-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+    }
 
-        .objective {
-            background-color: var(--bg-light);
-            padding: 15px 20px;
-            border-left: 5px solid var(--secondary-color);
-            margin-bottom: 30px;
-            border-radius: 4px;
-        }
+    .project-action-btn {
+      font-size: 0.8rem;
+      color: var(--cyan);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: var(--transition);
+    }
 
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        @media (max-width: 600px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        .exp-item, .edu-item {
-            margin-bottom: 20px;
-        }
-
-        .exp-title, .edu-title {
-            font-weight: bold;
-            color: #2c3e50;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .company, .school {
-            color: var(--secondary-color);
-        }
-
-        .date {
-            font-style: italic;
-            color: #7f8c8d;
-        }
-
-        .certif-list li {
-            list-style-type: '✓ ';
-            padding-left: 5px;
-        }
-    </style>
+    .card:hover .project-action-btn {
+      color: var(--white);
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Thomas PLANE</h1>
-        <p class="subtitle">Étudiant en BTS SIO (Services Informatiques aux Organisations)</p>
-        <div class="contact-info">
-            <span>📍 Paris, France</span>
-            <span>📞 06 68 60 04 86</span>
-            <span>✉️ <a href="mailto:Planethomas5@gmail.com">Planethomas5@gmail.com</a></span>
-            <span>🔗 <a href="https://linkedin.com/in/thomas-plane" target="_blank">LinkedIn</a></span>
+<div class="page-loader" id="loader"><div class="loader-logo">SISR</div></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="navbar dark" id="navbar">
+  <a href="index.html" class="nav-logo">T<span>ON</span>NOM</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="parcours.html">Parcours</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="synthese.html">Synthèse</a></li>
+    <li><a href="projets.html" class="active">Projets</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <h1 class="page-title">Mes Réalisations</h1>
+  <p class="page-subtitle">Travaux pratiques et projets d'infrastructure de niveau BTS SIO</p>
+</div>
+
+<div class="filter-bar reveal">
+  <button class="filter-btn active" onclick="filter('all', this)">Tout</button>
+  <button class="filter-btn" onclick="filter('reseaux', this)"><i class="fas fa-network-wired"></i> Réseaux</button>
+  <button class="filter-btn" onclick="filter('systemes', this)"><i class="fas fa-server"></i> Systèmes</button>
+  <button class="filter-btn" onclick="filter('securite', this)"><i class="fas fa-shield-alt"></i> Sécurité</button>
+  <button class="filter-btn" onclick="filter('supervision', this)"><i class="fas fa-chart-line"></i> Supervision</button>
+  <button class="filter-btn" onclick="filter('virt', this)"><i class="fas fa-cube"></i> Virtualisation</button>
+</div>
+
+<main>
+  <div class="projects-grid" id="projectsGrid">
+
+    <div class="card reveal" data-cat="reseaux" onclick="openProject('vlan')">
+      <div class="card-body">
+        <div class="card-icon-box"><i class="fas fa-project-diagram"></i></div>
+        <div class="project-cat" style="font-size: 0.75rem; color: var(--violet); font-weight: 700; text-transform: uppercase;">Réseaux</div>
+        <h3 class="card-title" style="margin-top: 0.25rem;">TP VLAN &amp; Routage</h3>
+        <p class="project-card-desc">Segmentation réseau via VLANs sur commutateurs Cisco Catalyst en mode CLI, routage inter-VLAN et isolation par listes de contrôle d'accès (ACL).</p>
+        <div class="project-card-footer">
+          <div class="card-tags" style="margin-top: 0;">
+            <span class="card-tag">VLAN</span><span class="card-tag">Cisco IOS</span>
+          </div>
+          <span class="project-action-btn">Analyser <i class="fas fa-chevron-right"></i></span>
         </div>
-    </header>
+      </div>
+    </div>
 
-    <section class="objective">
-        <p>Actuellement en première année de BTS SIO au Lycée Turgot (Paris), je suis à la recherche d'un <strong>stage à partir du 18 mai 2026</strong>, afin de développer mes compétences et les mettre au service d'une organisation.</p>
-    </section>
-
-    <section>
-        <h2>🛠️ Compétences</h2>
-        <div class="grid">
-            <div>
-                <h3>Réseaux & Infrastructures</h3>
-                <ul>
-                    <li>Installation d'infrastructure réseaux</li>
-                    <li>Pratique de Cisco Packet Tracer & GNS3</li>
-                    <li>Commandes et configuration de switchs</li>
-                </ul>
-            </div>
-            <div>
-                <h3>Systèmes & Gestion IT</h3>
-                <ul>
-                    <li>Création de serveurs et machines virtuelles</li>
-                    <li>Gestion du patrimoine informatique (GLPI)</li>
-                    <li>Gestion de logiciels système et Helpdesk</li>
-                </ul>
-            </div>
-            <div>
-                <h3>Développement & Web</h3>
-                <ul>
-                    <li>Bases du code (HTML, CSS)</li>
-                    <li>Découverte des pratiques DevOps</li>
-                    <li>Automatisation de scripts (PowerShell)</li>
-                    <li>Création de sites avec WordPress</li>
-                </ul>
-            </div>
-            <div>
-                <h3>Langues & Atouts</h3>
-                <ul>
-                    <li>Français (Langue maternelle)</li>
-                    <li>Anglais</li>
-                </ul>
-            </div>
+    <div class="card reveal" data-cat="systemes" onclick="openProject('ad')">
+      <div class="card-body">
+        <div class="card-icon-box"><i class="fab fa-windows"></i></div>
+        <div class="project-cat" style="font-size: 0.75rem; color: var(--violet); font-weight: 700; text-transform: uppercase;">Systèmes</div>
+        <h3 class="card-title" style="margin-top: 0.25rem;">Active Directory DS</h3>
+        <p class="project-card-desc">Déploiement d'un contrôleur de domaine Windows Server 2022. Gestion centralisée des utilisateurs (OU) et stratégies de sécurité par GPO.</p>
+        <div class="project-card-footer">
+          <div class="card-tags" style="margin-top: 0;">
+            <span class="card-tag">AD DS</span><span class="card-tag">GPO</span>
+          </div>
+          <span class="project-action-btn">Analyser <i class="fas fa-chevron-right"></i></span>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section>
-        <h2>💼 Expériences Professionnelles</h2>
-        
-        <div class="exp-item">
-            <div class="exp-title">
-                <span>Gestionnaire Helpdesk & Technicien PC — <span class="company">EIFFAGE (DSI)</span>, Saint-Ouen (93)</span>
-                <span class="date">2025 (6 semaines)</span>
-            </div>
-            <ul>
-                <li>Gestion des logiciels système et des clients du Helpdesk.</li>
-                <li>Installation de postes de travail (PC et écrans).</li>
-                <li>Brassage informatique : vérification de prise switch vers prise secteur.</li>
-            </ul>
+    <div class="card reveal" data-cat="securite" onclick="openProject('firewall')">
+      <div class="card-body">
+        <div class="card-icon-box"><i class="fas fa-shield-alt"></i></div>
+        <div class="project-cat" style="font-size: 0.75rem; color: var(--violet); font-weight: 700; text-transform: uppercase;">Sécurité</div>
+        <h3 class="card-title" style="margin-top: 0.25rem;">Pare-feu pfSense &amp; DMZ</h3>
+        <p class="project-card-desc">Mise en place d'une passerelle de sécurité pfSense avec filtrage d'adresses, règles NAT, zone DMZ isolée et tunnel VPN IPsec sécurisé.</p>
+        <div class="project-card-footer">
+          <div class="card-tags" style="margin-top: 0;">
+            <span class="card-tag">pfSense</span><span class="card-tag">VPN</span>
+          </div>
+          <span class="project-action-btn">Analyser <i class="fas fa-chevron-right"></i></span>
         </div>
+      </div>
+    </div>
 
-        <div class="exp-item">
-            <div class="exp-title">
-                <span>Observation DevOps & Automatisation — <span class="company">EIFFAGE (DSI)</span>, Neuilly-sur-Marne (93)</span>
-                <span class="date">2024 (8 semaines)</span>
-            </div>
-            <ul>
-                <li>Observation de la partie DevOps de l'entreprise.</li>
-                <li>Synchronisation automatisée de deux tableaux Excel à partir de commandes PowerShell.</li>
-            </ul>
+    <div class="card reveal" data-cat="systemes" onclick="openProject('linux')">
+      <div class="card-body">
+        <div class="card-icon-box"><i class="fab fa-linux"></i></div>
+        <div class="project-cat" style="font-size: 0.75rem; color: var(--violet); font-weight: 700; text-transform: uppercase;">Systèmes</div>
+        <h3 class="card-title" style="margin-top: 0.25rem;">Serveur Linux Debian</h3>
+        <p class="project-card-desc">Administration système sous Debian 12. Déploiement d'un serveur Web Apache, gestion des droits d'accès, stockage RAID et scripts Bash.</p>
+        <div class="project-card-footer">
+          <div class="card-tags" style="margin-top: 0;">
+            <span class="card-tag">Debian</span><span class="card-tag">RAID 1</span>
+          </div>
+          <span class="project-action-btn">Analyser <i class="fas fa-chevron-right"></i></span>
         </div>
+      </div>
+    </div>
 
-        <div class="exp-item">
-            <div class="exp-title">
-                <span>Maintenance Serveurs — <span class="company">EIFFAGE (DSI)</span>, Neuilly-sur-Marne</span>
-                <span class="date">Juin 2023 (3 semaines)</span>
-            </div>
-            <ul>
-                <li>Mise à jour de serveurs d'entreprise.</li>
-                <li>Désinstallation et gestion d'anti-virus.</li>
-            </ul>
+    <div class="card reveal" data-cat="supervision" onclick="openProject('nagios')">
+      <div class="card-body">
+        <div class="card-icon-box"><i class="fas fa-chart-line"></i></div>
+        <div class="project-cat" style="font-size: 0.75rem; color: var(--violet); font-weight: 700; text-transform: uppercase;">Supervision</div>
+        <h3 class="card-title" style="margin-top: 0.25rem;">Monitoring Nagios Core</h3>
+        <p class="project-card-desc">Supervision active d'équipements réseaux et serveurs avec Nagios. Collecte via protocoles SNMP/NRPE et système d'alertes mails automatisé.</p>
+        <div class="project-card-footer">
+          <div class="card-tags" style="margin-top: 0;">
+            <span class="card-tag">Nagios</span><span class="card-tag">SNMP</span>
+          </div>
+          <span class="project-action-btn">Analyser <i class="fas fa-chevron-right"></i></span>
         </div>
+      </div>
+    </div>
 
-        <div class="exp-item">
-            <div class="exp-title">
-                <span>Découverte Réseaux — <span class="company">EIFFAGE (DSI)</span>, Neuilly-sur-Marne</span>
-                <span class="date">Mars 2023 (3 semaines)</span>
-            </div>
-            <ul>
-                <li>Découverte de l'utilisation pratique d'un switch.</li>
-                <li>Diagnostic, identification des erreurs et apprentissage des commandes de switch.</li>
-            </ul>
+    <div class="card reveal" data-cat="virt" onclick="openProject('vmware')">
+      <div class="card-body">
+        <div class="card-icon-box"><i class="fas fa-cube"></i></div>
+        <div class="project-cat" style="font-size: 0.75rem; color: var(--violet); font-weight: 700; text-transform: uppercase;">Virtualisation</div>
+        <h3 class="card-title" style="margin-top: 0.25rem;">Infrastructure VMware ESXi</h3>
+        <p class="project-card-desc">Déploiement d'un hyperviseur ESXi de type 1. Gestion des banques de stockage, commutateurs virtuels vSwitch et snapshots de sécurité.</p>
+        <div class="project-card-footer">
+          <div class="card-tags" style="margin-top: 0;">
+            <span class="card-tag">ESXi 8</span><span class="card-tag">OVA</span>
+          </div>
+          <span class="project-action-btn">Analyser <i class="fas fa-chevron-right"></i></span>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section>
-        <h2>🎓 Formation</h2>
-        <div class="edu-item">
-            <div class="edu-title">
-                <span>BTS Services Informatiques aux Organisations (SIO)</span>
-                <span class="date">2025 - 2027</span>
-            </div>
-            <div class="school">Lycée Turgot, Paris</div>
-        </div>
-        <div class="edu-item">
-            <div class="edu-title">
-                <span>Baccalauréat Professionnel en Systèmes Numériques (SN)</span>
-                <span class="date">2022 - 2025</span>
-            </div>
-            <div class="school">Lycée La Tournelle, La Garenne-Colombes</div>
-        </div>
-    </section>
+  </div>
+</main>
 
-    <section>
-        <h2>📜 Certifications & Moocs</h2>
-        <ul class="certif-list">
-            <li>Cisco Basic Networking</li>
-            <li>Introduction to Packet Tracer</li>
-            <li>Exploring IoT / Exploring Networking with Cisco Packet Tracer</li>
-            <li>Premiers pas avec Cisco Packet Tracer</li>
-            <li>Méthode E-BIOS</li>
-            <li>Atelier RGPD (MOOC de la CNIL)</li>
-        </ul>
-    </section>
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalClick(event)">
+  <div class="modal" id="modal">
+    <div class="modal-thumb">
+      <div id="modalIcon" style="font-size:3.5rem; color:var(--cyan);"><i class="fas fa-terminal"></i></div>
+      <div>
+        <h2 id="modalTitle">Titre du projet</h2>
+        <p class="modal-meta" id="modalMeta">Catégorie · Technologies</p>
+      </div>
+      <button class="modal-thumb-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc" id="modalDesc"></p>
+      <div id="modalTags" class="card-tags"></div>
+    </div>
+  </div>
+</div>
 
-    <section>
-        <h2>🎯 Centres d'intérêt</h2>
-        <p>Cinéma, Sport en salle, Apprentissage continu du code.</p>
-    </section>
+<footer>
+  <div class="footer-bottom">
+    <span>© 2024–2026 Prénom NOM — Portfolio Technique</span>
+    <span><a href="index.html" style="color:var(--cyan);">← Retour Accueil</a></span>
+  </div>
+</footer>
 
+<script>
+document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollProgress').style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+});
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 600));
+
+// Système de filtrage JavaScript
+function filter(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.projects-grid .card').forEach(c => {
+    const show = cat === 'all' || c.dataset.cat === cat;
+    c.style.opacity = show ? '1' : '0.1';
+    c.style.pointerEvents = show ? '' : 'none';
+    c.style.transform = show ? '' : 'scale(0.96)';
+  });
+}
+
+// Base de données des fenêtres modales (TPs)
+const projects = {
+  vlan:      { title:'TP VLAN & Routage Inter-VLAN',       meta:'Réseaux · Cisco Packet Tracer',         icon:'fa-project-diagram', desc:'Configuration fine de VLANs sur commutateurs Cisco Catalyst en mode CLI. Mise en œuvre des liens d\'agrégation Trunk 802.1Q, routage inter-VLAN via architecture router-on-a-stick et restrictions de sécurité par listes de contrôle d\'accès (ACL).', tags:['VLAN','802.1Q','Trunk','Inter-VLAN','ACL','Cisco IOS'] },
+  ad:        { title:'Infrastructure Active Directory',     meta:'Systèmes · Windows Server 2022',        icon:'fa-server',           desc:'Mise en œuvre d\'un rôle AD DS (Active Directory Domain Services). Création de l\'arborescence des unités d\'organisation (OU), industrialisation des comptes utilisateurs, restrictions de sessions, et déploiement de stratégies de groupe (GPO) pour le parc machines.', tags:['AD DS','GPO','DHCP','DNS','OU','WS 2022'] },
+  firewall:  { title:'Pare-feu pfSense & DMZ',             meta:'Sécurité · pfSense 2.7',                icon:'fa-shield-alt',       desc:'Installation d\'une appliance de sécurité pfSense. Configuration des interfaces WAN/LAN, de règles de filtrage strictes, d\'un réseau DMZ isolé pour héberger des serveurs web publics, et d\'un réseau privé virtuel (VPN IPsec site-à-site).', tags:['pfSense','Firewall','NAT','DMZ','VPN IPsec','Règles'] },
+  linux:     { title:'Serveur Linux Debian 12',            meta:'Systèmes · Debian 12 Bookworm',         icon:'fab fa-linux',        desc:'Déploiement et sécurisation d\'un serveur Debian. Configuration d\'adresses réseau fixes, serveur web Apache, sécurisation du protocole SSH par clés asymétriques, configuration d\'un stockage RAID 1 logiciel, scripts d\'automatisation Bash et planification via tâches Cron.', tags:['Debian 12','Apache','SSH','RAID 1','Bash','Cron'] },
+  nagios:    { title:'Supervision Nagios Core',            meta:'Supervision · Nagios Core 4',           icon:'fa-chart-line',       desc:'Mise en place d\'une infrastructure de supervision centralisée sous Nagios Core. Paramétrage des sondes SNMP pour les commutateurs Cisco et des agents de supervision NRPE pour les serveurs. Configuration des seuils d\'alertes critiques et notifications par messagerie.', tags:['Nagios Core','SNMP','NRPE','Email','Dashboard'] },
+  vmware:    { title:'Infrastructure VMware ESXi',         meta:'Virtualisation · VMware ESXi 8',        icon:'fa-cube',             desc:'Industrialisation de serveurs virtuels via un hyperviseur bare-metal ESXi. Création et dimensionnement des machines virtuelles Linux/Windows, allocation de volumes de stockage (datastores), gestion des interfaces réseau virtuelles (vSwitch) et templates d\'export OVA.', tags:['ESXi','vSphere','vSwitch','Datastore','Snapshot','OVA'] }
+};
+
+function openProject(key) {
+  const d = projects[key];
+  if (!d) return;
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalMeta').textContent  = d.meta;
+  document.getElementById('modalDesc').textContent  = d.desc;
+  document.getElementById('modalIcon').innerHTML = `<i class="fas ${d.icon}"></i>`;
+  document.getElementById('modalTags').innerHTML = d.tags.map(t => `<span class="card-tag">${t}</span>`).join('');
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalClick(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
