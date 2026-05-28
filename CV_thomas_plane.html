@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Thomas PLANE</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #18bc9c;
+            --text-color: #333;
+            --bg-light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .objective {
+            background-color: var(--bg-light);
+            padding: 15px 20px;
+            border-left: 5px solid var(--secondary-color);
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .exp-item, .edu-item {
+            margin-bottom: 20px;
+        }
+
+        .exp-title, .edu-title {
+            font-weight: bold;
+            color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .company, .school {
+            color: var(--secondary-color);
+        }
+
+        .date {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+
+        .certif-list li {
+            list-style-type: '✓ ';
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Thomas PLANE</h1>
+        <p class="subtitle">Étudiant en BTS SIO (Services Informatiques aux Organisations)</p>
+        <div class="contact-info">
+            <span>📍 Paris, France</span>
+            <span>📞 06 68 60 04 86</span>
+            <span>✉️ <a href="mailto:Planethomas5@gmail.com">Planethomas5@gmail.com</a></span>
+            <span>🔗 <a href="https://linkedin.com/in/thomas-plane" target="_blank">LinkedIn</a></span>
+        </div>
+    </header>
+
+    <section class="objective">
+        <p>Actuellement en première année de BTS SIO au Lycée Turgot (Paris), je suis à la recherche d'un <strong>stage à partir du 18 mai 2026</strong>, afin de développer mes compétences et les mettre au service d'une organisation.</p>
+    </section>
+
+    <section>
+        <h2>🛠️ Compétences</h2>
+        <div class="grid">
+            <div>
+                <h3>Réseaux & Infrastructures</h3>
+                <ul>
+                    <li>Installation d'infrastructure réseaux</li>
+                    <li>Pratique de Cisco Packet Tracer & GNS3</li>
+                    <li>Commandes et configuration de switchs</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Systèmes & Gestion IT</h3>
+                <ul>
+                    <li>Création de serveurs et machines virtuelles</li>
+                    <li>Gestion du patrimoine informatique (GLPI)</li>
+                    <li>Gestion de logiciels système et Helpdesk</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Développement & Web</h3>
+                <ul>
+                    <li>Bases du code (HTML, CSS)</li>
+                    <li>Découverte des pratiques DevOps</li>
+                    <li>Automatisation de scripts (PowerShell)</li>
+                    <li>Création de sites avec WordPress</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Langues & Atouts</h3>
+                <ul>
+                    <li>Français (Langue maternelle)</li>
+                    <li>Anglais</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>💼 Expériences Professionnelles</h2>
+        
+        <div class="exp-item">
+            <div class="exp-title">
+                <span>Gestionnaire Helpdesk & Technicien PC — <span class="company">EIFFAGE (DSI)</span>, Saint-Ouen (93)</span>
+                <span class="date">2025 (6 semaines)</span>
+            </div>
+            <ul>
+                <li>Gestion des logiciels système et des clients du Helpdesk.</li>
+                <li>Installation de postes de travail (PC et écrans).</li>
+                <li>Brassage informatique : vérification de prise switch vers prise secteur.</li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-title">
+                <span>Observation DevOps & Automatisation — <span class="company">EIFFAGE (DSI)</span>, Neuilly-sur-Marne (93)</span>
+                <span class="date">2024 (8 semaines)</span>
+            </div>
+            <ul>
+                <li>Observation de la partie DevOps de l'entreprise.</li>
+                <li>Synchronisation automatisée de deux tableaux Excel à partir de commandes PowerShell.</li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-title">
+                <span>Maintenance Serveurs — <span class="company">EIFFAGE (DSI)</span>, Neuilly-sur-Marne</span>
+                <span class="date">Juin 2023 (3 semaines)</span>
+            </div>
+            <ul>
+                <li>Mise à jour de serveurs d'entreprise.</li>
+                <li>Désinstallation et gestion d'anti-virus.</li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-title">
+                <span>Découverte Réseaux — <span class="company">EIFFAGE (DSI)</span>, Neuilly-sur-Marne</span>
+                <span class="date">Mars 2023 (3 semaines)</span>
+            </div>
+            <ul>
+                <li>Découverte de l'utilisation pratique d'un switch.</li>
+                <li>Diagnostic, identification des erreurs et apprentissage des commandes de switch.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>🎓 Formation</h2>
+        <div class="edu-item">
+            <div class="edu-title">
+                <span>BTS Services Informatiques aux Organisations (SIO)</span>
+                <span class="date">2025 - 2027</span>
+            </div>
+            <div class="school">Lycée Turgot, Paris</div>
+        </div>
+        <div class="edu-item">
+            <div class="edu-title">
+                <span>Baccalauréat Professionnel en Systèmes Numériques (SN)</span>
+                <span class="date">2022 - 2025</span>
+            </div>
+            <div class="school">Lycée La Tournelle, La Garenne-Colombes</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>📜 Certifications & Moocs</h2>
+        <ul class="certif-list">
+            <li>Cisco Basic Networking</li>
+            <li>Introduction to Packet Tracer</li>
+            <li>Exploring IoT / Exploring Networking with Cisco Packet Tracer</li>
+            <li>Premiers pas avec Cisco Packet Tracer</li>
+            <li>Méthode E-BIOS</li>
+            <li>Atelier RGPD (MOOC de la CNIL)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>🎯 Centres d'intérêt</h2>
+        <p>Cinéma, Sport en salle, Apprentissage continu du code.</p>
+    </section>
+
+</body>
+</html>
